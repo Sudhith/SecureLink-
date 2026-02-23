@@ -1,13 +1,3 @@
-/**
- * Nexus Scanner — Backend Server
- * ─────────────────────────────────────────────────────────────
- * Proxies VirusTotal API calls so the key never reaches clients.
- * Also exposes /api/scan for direct chatbot / programmatic use.
- *
- * Start: node server.js  (or: npm start)
- * ─────────────────────────────────────────────────────────────
- */
-
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
