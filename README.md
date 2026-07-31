@@ -172,3 +172,39 @@ ruff check .
 ```
 
 ---
+
+## Limitations
+
+Being upfront about these matters more than hiding them:
+
+- **Free-tier rate limits:** VirusTotal (4 req/min, 500/day), PhishTank (hourly cap), URLScan.io submissions default to "unlisted" visibility rather than fully private (no free option for fully private scans)
+- **Model training data:** currently synthetic — see [Model Status](#model-status)
+- **Scoring weights** are fixed and manually chosen, not learned — future work may tune these using collected feedback data
+- **WHOIS/SSL lookups** can be slow, blocked by some registrars, or unavailable for certain TLDs — the pipeline degrades gracefully when this happens
+- **Scan history persistence** depends on the hosting platform's disk persistence across redeploys — verify this if deploying
+
+---
+
+## Roadmap
+
+- [ ] Retrain on real PhiUSIIL dataset and publish real metrics
+- [ ] Deploy publicly with webhook mode + persistent storage
+- [ ] Group chat auto-scanning support
+- [ ] Public read-only scan API endpoint
+- [ ] Ensemble model (XGBoost + Random Forest + Logistic Regression stacking)
+- [ ] Feedback-driven periodic retraining
+- [ ] Slice-based evaluation (by TLD, HTTPS status, shortened vs. full URLs)
+- [ ] Browser extension / WhatsApp / Discord integration
+
+---
+
+## Screenshots
+
+*(Add screenshots to `/screenshots` and reference them here, e.g. dashboard views, a sample Telegram report, and the model statistics page.)*
+
+---
+
+## License
+
+MIT — feel free to fork and build on this.
+
