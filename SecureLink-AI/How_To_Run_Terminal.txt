@@ -1,0 +1,10 @@
+# Fill in .env first
+Copy-Item .env.example .env
+
+# Terminal 1 — API + Bot (starts in polling mode locally)
+cd "C:\Users\saisu\OneDrive\Desktop\cLAUDE Projects\ssss\SecureLink-AI"
+uvicorn app.api:app --reload --port 8000
+
+# Terminal 2 — Dashboard
+cd "C:\Users\saisu\OneDrive\Desktop\cLAUDE Projects\ssss\SecureLink-AI"
+streamlit run dashboard/streamlit_app.py
