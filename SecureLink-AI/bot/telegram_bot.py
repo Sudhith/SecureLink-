@@ -28,7 +28,6 @@ from bot.handlers import (
     callback_handler,
     feedback_info_handler,
     help_handler,
-    history_handler,
     start_handler,
     stats_handler,
     url_message_handler,
@@ -60,7 +59,6 @@ def build_application() -> Application:
     app.add_handler(CommandHandler("start", start_handler))
     app.add_handler(CommandHandler("help", help_handler))
     app.add_handler(CommandHandler("about", about_handler))
-    app.add_handler(CommandHandler("history", history_handler))
     app.add_handler(CommandHandler("stats", stats_handler))
     app.add_handler(CommandHandler("feedback", feedback_info_handler))
 
