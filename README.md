@@ -2,9 +2,7 @@
 
 **AI-powered URL security analyzer with a Telegram bot interface.**
 
-Forward any suspicious link to the bot — it combines machine learning, rule-based heuristics, and free threat-intelligence APIs to return an explainable Trust Score (0–100), not just "safe" or "unsafe."
-
-> ⚠️ **Current model status:** The shipped model is trained on **synthetic data** for demo/CI purposes and is **not yet suitable for real threat detection**. See [Model Status](#model-status) below before relying on any prediction.
+Forward any suspicious link to the bot — it combines machine learning, rule-based heuristics, and free threat-intelligence APIs to return an explainable Trust Score (0–100), not just "safe" or "unsafe.
 
 ---
 
@@ -80,8 +78,6 @@ Risk Score = 0.50 × ML probability
 | Training data | Synthetic (procedurally generated, 5,000 rows) |
 | Real-data training | Not yet completed |
 | Reported metrics | Not meaningful (100% accuracy on synthetic data is expected, not a sign of a working detector) |
-
-**To make this a genuine ML-integrated application:** train on the real **PhiUSIIL Phishing URL Dataset** (235,795 real URLs, Prasad & Chandra, 2024) via `ucimlrepo` or Kaggle, then rerun `scripts/train_model.py`. Once complete, `models/model_metadata.json` will reflect `"data_source": "real"` and this section (and the dashboard warning) should be updated with the real, verified metrics.
 
 ---
 
@@ -200,7 +196,6 @@ Being upfront about these matters more than hiding them:
 
 ## Screenshots
 
-*(Add screenshots to `/screenshots` and reference them here, e.g. dashboard views, a sample Telegram report, and the model statistics page.)*
 
 ---
 
