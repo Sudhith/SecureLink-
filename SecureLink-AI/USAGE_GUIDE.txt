@@ -1,0 +1,133 @@
+================================================================
+       SECURELINK AI — USAGE GUIDE FOR YOU & YOUR FRIENDS
+================================================================
+
+HOW THE BOT WORKS
+-----------------
+Send any suspicious URL to the bot on Telegram.
+It checks it against VirusTotal, Google Safe Browsing,
+URLScan.io, and an ML model trained on 235,000 real URLs.
+You get a Risk Score (0–100) + plain-English explanation.
+
+That's it. No commands needed. Just paste the URL.
+
+
+----------------------------------------------------------------
+RATE LIMITS — HOW MANY SCANS CAN YOU DO PER DAY?
+----------------------------------------------------------------
+
+The free APIs have daily quotas shared across ALL users:
+
+  VirusTotal        → 500 scans/day  ← the tightest limit
+  Google Safe Brwsg → 10,000/day     ← very comfortable
+  URLScan.io        → 100 scans/day  ← moderate
+  Bot (per user)    → 1 scan per 10 seconds (cooldown)
+
+GOOD NEWS — The Cache System:
+  If 5 friends scan the SAME URL, it only counts as
+  1 VirusTotal call (not 5). Results are cached for 24 hours.
+  So scanning popular sites repeatedly costs nothing.
+
+
+PRACTICAL DAILY BUDGET (rough guide)
+--------------------------------------
+  Unique URLs scanned per day  |  VT still has quota?
+  -----------------------------|---------------------
+  Up to 500 unique URLs/day   |  Yes, comfortably
+  500–600 unique URLs/day     |  VT may run out (others still work)
+  600+ unique URLs/day        |  VT unavailable, ML + rules still run
+
+  NOTE: Even without VT quota, the bot still gives you:
+    ✅ ML model prediction (trained on 235k real URLs)
+    ✅ Google Safe Browsing check
+    ✅ Rule-based analysis
+    ✅ A risk score and recommendation
+  It just notes "VT unavailable" in the report.
+
+
+----------------------------------------------------------------
+TIPS TO GET THE MOST OUT OF IT
+----------------------------------------------------------------
+
+1. DON'T SCAN THE SAME URL TWICE
+   Results are cached for 24 hours. Scanning google.com
+   10 times in a row burns 0 extra API calls after the first.
+
+2. SHARE RESULTS INSTEAD OF SCANNING SEPARATELY
+   If a friend wants to check the same suspicious link,
+   just forward the bot's report to them instead of having
+   them scan it again.
+
+3. SCAN ONLY WHAT'S GENUINELY SUSPICIOUS
+   Don't test the bot with google.com, youtube.com, etc.
+   Save quota for links you actually received from strangers
+   or that look off (random characters, unfamiliar domains).
+
+4. BEST TIMES TO SCAN
+   The VT quota resets every 24 hours (midnight UTC = 5:30 AM IST).
+   If quota runs out in the evening, try again next morning.
+
+5. WHAT TO SEND THE BOT
+   ✅ Links from WhatsApp forwards you didn't ask for
+   ✅ URLs in suspicious emails/SMS
+   ✅ Short links (bit.ly, tinyurl) before clicking
+   ✅ Links from Instagram DMs/stories from strangers
+   ✅ "You won a prize" type links
+   ❌ Don't waste quota on: amazon.com, google.com, youtube.com
+
+
+----------------------------------------------------------------
+UNDERSTANDING YOUR RISK SCORE
+----------------------------------------------------------------
+
+  0  – 20   ✅  SAFE           — Go ahead, looks clean
+  21 – 40   🟡  MODERATE RISK  — Proceed with caution
+  41 – 65   🟠  SUSPICIOUS     — Avoid if possible
+  66 – 80   🔴  DANGEROUS      — Do not open
+  81 – 100  🚨  CRITICAL       — Definitely malicious
+
+
+----------------------------------------------------------------
+FOR YOUR FRIENDS — SHARING THE BOT
+----------------------------------------------------------------
+
+Just share your bot's Telegram username with them.
+Each person gets their own 10-second cooldown,
+but everyone shares the same daily API quota.
+
+If you expect heavy usage (10+ active users daily),
+the VirusTotal 500/day limit will be the first to run out.
+The ML model and Safe Browsing will still keep working.
+
+Recommended for a friend group:
+  → Up to ~10 friends, 5-10 scans each per day = fine
+  → More than that? Start by scanning only truly suspicious links
+
+
+----------------------------------------------------------------
+WHAT THE BOT CANNOT DO
+----------------------------------------------------------------
+
+  ✗ It cannot open/visit the URL to check the page content
+    (that would require a headless browser, not on free tier)
+  ✗ It cannot scan QR codes (scan QR → get URL → paste URL)
+  ✗ It cannot check attachments (PDFs, images, files)
+  ✗ It cannot guarantee 100% accuracy — always use judgment
+    alongside the score, especially for moderate-risk URLs
+
+
+----------------------------------------------------------------
+QUICK REFERENCE — BOT COMMANDS
+----------------------------------------------------------------
+
+  /start    — Welcome message
+  /help     — Command list
+  /about    — How it works
+  /stats    — Total scans done globally
+  /feedback — How the 👍/👎 feedback works
+  (any URL) — Analyze it immediately
+
+
+================================================================
+          Stay safe. When in doubt, don't click.
+================================================================

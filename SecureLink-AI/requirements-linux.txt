@@ -1,0 +1,6 @@
+# SecureLink AI — Linux/CI/Deployment dependencies
+# Use this for Railway, Render, Docker, GitHub Actions (Ubuntu).
+# SHAP builds from source on Linux/Mac without MSVC.
+# For Windows local dev: use requirements.txt (SHAP is commented out there).
+-r requirements.txt
+shap==0.44.1

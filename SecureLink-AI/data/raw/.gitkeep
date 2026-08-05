@@ -1,0 +1,3 @@
+# Placeholder — place PhiUSIIL Phishing URL Dataset CSV here
+# Download from: https://www.kaggle.com/datasets/drashti4/phiusiil-phishing-url-dataset
+# The training script (scripts/train_model.py) will find and load any *.csv in this directory.

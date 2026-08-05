@@ -1,0 +1,85 @@
+name: SecureLink AI CI
+
+on:
+  push:
+    branches: ["main", "develop"]
+    paths:
+      - "SecureLink-AI/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "SecureLink-AI/**"
+
+jobs:
+  lint-and-test:
+    name: Lint + Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    defaults:
+      run:
+        working-directory: SecureLink-AI
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+          cache-dependency-path: SecureLink-AI/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create required directories
+        run: |
+          mkdir -p data/raw data/processed models
+
+      - name: Set up test environment
+        run: |
+          cp .env.example .env
+          echo "DATABASE_PATH=./data/test.db" >> .env
+
+      - name: Lint with ruff
+        run: |
+          ruff check . --output-format=github
+        continue-on-error: false
+
+      - name: Run unit tests (offline — all API calls mocked)
+        run: |
+          python -m pytest tests/ -v --tb=short --no-header \
+            -p no:warnings \
+            --asyncio-mode=auto
+
+      - name: Verify training script runs with synthetic data
+        run: |
+          python scripts/train_model.py
+          # Verify output files exist
+          test -f models/model.pkl && echo "✅ model.pkl created"
+          test -f models/model_metadata.json && echo "✅ model_metadata.json created"
+
+      - name: Check model metadata flags synthetic correctly
+        run: |
+          python -c "
+          import json
+          with open('models/model_metadata.json') as f:
+              meta = json.load(f)
+          assert meta['is_synthetic'] == True, 'Expected is_synthetic=True for CI synthetic model'
+          print(f'✅ Model metadata OK: is_synthetic={meta[\"is_synthetic\"]}')
+          print(f'   Dataset: {meta[\"dataset_version\"]}')
+          print(f'   Trained at: {meta[\"trained_at\"]}')
+          "
+
+      - name: Verify API endpoints start (import check)
+        run: |
+          python -c "
+          from app.api import app
+          from app.config import get_settings
+          s = get_settings()
+          print('✅ FastAPI app imported successfully')
+          "

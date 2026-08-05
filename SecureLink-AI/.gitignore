@@ -1,0 +1,85 @@
+# SecureLink AI — .gitignore
+
+# ── Secrets (CRITICAL — never commit) ────────────────────────────────────────
+.env
+*.env.local
+secrets/
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# ── Testing ──────────────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+*.log
+
+# ── ML models (large binaries — track separately or with Git LFS) ─────────────
+models/*.pkl
+models/*.joblib
+# model_metadata.json is committed (small text file with metrics)
+!models/model_metadata.json
+!models/.gitkeep
+
+# ── Data (often large — don't commit raw CSVs) ────────────────────────────────
+data/raw/*.csv
+data/raw/*.parquet
+data/processed/*.csv
+data/processed/*.parquet
+# Keep directory structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# ── Database ─────────────────────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# ── IDE ──────────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ── Streamlit ────────────────────────────────────────────────────────────────
+.streamlit/secrets.toml
+
+# ── Notebooks ────────────────────────────────────────────────────────────────
+notebooks/.ipynb_checkpoints/
+
+# ── Reports / screenshots ─────────────────────────────────────────────────────
+reports/*.png
+reports/*.pdf
+screenshots/*.png

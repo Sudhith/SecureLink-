@@ -47,7 +47,7 @@ FEATURE_LABELS = {
     "tld": "Suspicious top-level domain",
     "domain_age_days": "Very young domain (recently registered)",
     "ssl_is_valid": "Invalid or missing SSL certificate",
-    "ssl_days_remaining": "SSL certificate expiring soon",
+        "ssl_days_remaining": "SSL certificate expiring soon",
     "ssl_is_self_signed": "Self-signed SSL certificate",
 }
 

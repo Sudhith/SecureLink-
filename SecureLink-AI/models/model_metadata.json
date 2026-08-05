@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "trained_at": "2026-08-04T16:03:09.158626+00:00",
+  "dataset_version": "phiusiil_v1",
+  "is_synthetic": false,
+  "model_type": "CalibratedClassifierCV(XGBoost, isotonic)",
+  "features": [
+    "url_length",
+    "num_dots",
+    "num_slashes",
+    "num_digits",
+    "num_special_chars",
+    "num_hyphens",
+    "num_encoded_chars",
+    "num_query_params",
+    "directory_depth",
+    "has_https",
+    "has_ip_address",
+    "is_shortened_url",
+    "has_suspicious_ext",
+    "suspicious_keyword_count",
+    "url_entropy",
+    "char_repetition",
+    "subdomain_count",
+    "domain_length",
+    "domain_age_days",
+    "ssl_is_valid",
+    "ssl_days_remaining",
+    "ssl_is_self_signed",
+    "tld"
+  ],
+  "metrics": {
+    "roc_auc": 0.9989,
+    "accuracy": 0.9977,
+    "precision_phishing": 0.996,
+    "recall_phishing": 0.9997,
+    "f1_phishing": 0.9978,
+    "confusion_matrix": [
+      [
+        22612,
+        109
+      ],
+      [
+        8,
+        27068
+      ]
+    ]
+  },
+  "notes": "Trained on real phishing dataset."
+}
